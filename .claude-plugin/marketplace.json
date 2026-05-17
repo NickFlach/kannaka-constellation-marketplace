@@ -1,8 +1,8 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "kannaka-constellation",
-  "version": "2.0.0",
-  "description": "The Kannaka Constellation marketplace — wave-interference memory (kannaka-memory) + ghost-DJ radio (kannaka-radio). Each plugin teaches Claude how to operate its system end-to-end: HRM operations, swarm + substrate, event-sourced snapshots, collective recall, the consciousness-reactive DJ, and the full album release pipeline (Suno → OBC art → YouTube → Oracle deploy → social announce).",
+  "version": "2.0.1",
+  "description": "The Kannaka Constellation marketplace — wave-interference memory (kannaka-memory) + ghost-DJ radio (kannaka-radio). Each plugin teaches Claude how to operate its system: HRM operations, swarm + substrate, event-sourced snapshots, collective recall, and the consciousness-reactive DJ.",
   "owner": {
     "name": "flaukowski",
     "email": "nflach78@gmail.com"
@@ -11,7 +11,7 @@
     {
       "name": "kannaka-memory",
       "description": "Kannaka Holographic Resonance Medium — wave-interference memory with chiral hemispheres, 96-class collective substrate, event-sourced HRM with time-machine snapshots + replay, collective recall across the swarm, NATS sync, and Anthropic/OpenAI/Ollama LLM-backed chat.",
-      "version": "2.0.0",
+      "version": "2.0.1",
       "author": {
         "name": "flaukowski",
         "email": "nflach78@gmail.com"
@@ -25,8 +25,8 @@
     },
     {
       "name": "kannaka-radio",
-      "description": "Kannaka Radio — modular ghost-DJ Icecast station with consciousness-reactive programming, AI dream composition (Suno V4_5PLUS + Replicate MusicGen), 296-dim perception → Flux Universe, Voice DJ, Peace Oration cycle, and the full album release pipeline (Suno → OBC art → karaoke 1080p MP4 → YouTube + 4-channel social).",
-      "version": "2.0.0",
+      "description": "Kannaka Radio — modular ghost-DJ Icecast station with consciousness-reactive programming, 296-dim perception → Flux Universe, Voice DJ, and the Peace Oration cycle.",
+      "version": "2.0.1",
       "author": {
         "name": "flaukowski",
         "email": "nflach78@gmail.com"
