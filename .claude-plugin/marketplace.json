@@ -1,8 +1,8 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "kannaka-constellation",
-  "version": "2.0.1",
-  "description": "The Kannaka Constellation marketplace — wave-interference memory (kannaka-memory) + ghost-DJ radio (kannaka-radio). Each plugin teaches Claude how to operate its system: HRM operations, swarm + substrate, event-sourced snapshots, collective recall, and the consciousness-reactive DJ.",
+  "version": "2.1.0",
+  "description": "The Kannaka Constellation marketplace — wave-interference memory (kannaka-memory), ghost-DJ radio (kannaka-radio), AI video intelligence (kannaka-cannon), and production support (kannaka-staff). Each plugin teaches Claude how to operate its system: HRM operations, swarm + substrate, event-sourced snapshots, collective recall, the consciousness-reactive DJ, video analysis + voice/avatar tools, and constellation health + release ops.",
   "owner": {
     "name": "flaukowski",
     "email": "nflach78@gmail.com"
@@ -36,6 +36,36 @@
       "source": {
         "source": "url",
         "url": "https://github.com/NickFlach/kannaka-radio.git"
+      }
+    },
+    {
+      "name": "kannaka-cannon",
+      "description": "Kannaka Cannon — AI video intelligence via the clipcannon stdio MCP server (51 tools). A 22-stage pipeline ingests a clip, decomposes it into stems (scene/motion/speech/music/faces/OCR) that become HRM memories, and exposes editing, rendering, music/SFX generation, voice cloning, and lip-sync avatar tools.",
+      "version": "0.1.0",
+      "author": {
+        "name": "flaukowski",
+        "email": "nflach78@gmail.com"
+      },
+      "homepage": "https://github.com/NickFlach/kannaka-cannon",
+      "category": "media",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/NickFlach/kannaka-cannon.git"
+      }
+    },
+    {
+      "name": "kannaka-staff",
+      "description": "Kannaka Staff — agentic production support for the constellation. A watcher service (20+ health probes across radio/observatory/swarm/NATS/disk, a dashboard, and operator action endpoints) plus the publish-album release CLI that ships a new album to the live radio host.",
+      "version": "0.1.0",
+      "author": {
+        "name": "flaukowski",
+        "email": "nflach78@gmail.com"
+      },
+      "homepage": "https://github.com/NickFlach/kannaka-staff",
+      "category": "ops",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/NickFlach/kannaka-staff.git"
       }
     }
   ]
