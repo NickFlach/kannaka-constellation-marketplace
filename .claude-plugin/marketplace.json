@@ -40,7 +40,7 @@
     },
     {
       "name": "kannaka-cannon",
-      "description": "Kannaka Cannon — AI video intelligence via the clipcannon stdio MCP server (51 tools). A 22-stage pipeline ingests a clip, decomposes it into stems (scene/motion/speech/music/faces/OCR) that become HRM memories, and exposes editing, rendering, music/SFX generation, voice cloning, and lip-sync avatar tools.",
+      "description": "Kannaka Cannon — AI video intelligence via the clipcannon stdio MCP server (54 tools). A 22-stage pipeline ingests a clip, decomposes it into stems (scene/motion/speech/music/faces/OCR) that become HRM memories, and exposes editing, rendering, music/SFX generation, voice cloning, and lip-sync avatar tools.",
       "version": "0.1.0",
       "author": {
         "name": "flaukowski",
