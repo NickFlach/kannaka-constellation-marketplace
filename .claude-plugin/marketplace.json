@@ -25,8 +25,8 @@
     },
     {
       "name": "kannaka-memory",
-      "description": "Kannaka Holographic Resonance Medium — wave-interference memory with chiral hemispheres, 96-class collective substrate, event-sourced HRM with time-machine snapshots + replay, collective recall across the swarm, NATS sync, and Anthropic/OpenAI/Ollama LLM-backed chat.",
-      "version": "2.0.1",
+      "description": "Kannaka Holographic Resonance Medium — wave-interference memory with chiral hemispheres, 96-class collective substrate, event-sourced HRM with time-machine snapshots + replay, collective recall across the swarm, NATS sync, an agentic coding loop (kannaka agent), real quantum tools (qBraid), and Anthropic/OpenAI/Ollama LLM-backed chat.",
+      "version": "2.1.0",
       "author": {
         "name": "flaukowski",
         "email": "nflach78@gmail.com"
