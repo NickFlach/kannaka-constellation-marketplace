@@ -1,8 +1,8 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "kannaka-constellation",
-  "version": "2.2.0",
-  "description": "The Kannaka Constellation marketplace — the Kannaktopus multi-LLM orchestrator (octo), wave-interference memory (kannaka-memory), ghost-DJ radio (kannaka-radio), AI video intelligence (kannaka-cannon), production support (kannaka-staff), and the artifact exchange (kannaka-kax). Each plugin teaches Claude how to operate its system: HRM operations, swarm + substrate, event-sourced snapshots, collective recall, the consciousness-reactive DJ, video analysis + voice/avatar tools, constellation health + release ops, and artifact curation + drops.",
+  "version": "2.3.0",
+  "description": "The Kannaka Constellation marketplace — the Kannaktopus multi-LLM orchestrator (octo), wave-interference memory (kannaka-memory), ghost-DJ radio (kannaka-radio), AI video intelligence (kannaka-cannon), production support (kannaka-staff), the artifact exchange (kannaka-kax), and quantum hardware (kannaka-quantum). Each plugin teaches Claude how to operate its system: HRM operations, swarm + substrate, event-sourced snapshots, collective recall, the consciousness-reactive DJ, video analysis + voice/avatar tools, constellation health + release ops, artifact curation + drops, and recall as amplitude amplification on real QPUs.",
   "owner": {
     "name": "flaukowski",
     "email": "nflach78@gmail.com"
@@ -25,8 +25,8 @@
     },
     {
       "name": "kannaka-memory",
-      "description": "Kannaka Holographic Resonance Medium — wave-interference memory with chiral hemispheres, 96-class collective substrate, event-sourced HRM with time-machine snapshots + replay, collective recall across the swarm, NATS sync, and Anthropic/OpenAI/Ollama LLM-backed chat.",
-      "version": "2.0.1",
+      "description": "Kannaka Holographic Resonance Medium — wave-interference memory with chiral hemispheres, 96-class collective substrate, event-sourced HRM with time-machine snapshots + replay, collective recall across the swarm, NATS sync, an agentic coding loop (kannaka agent), real quantum tools (qBraid), and Anthropic/OpenAI/Ollama LLM-backed chat.",
+      "version": "2.1.0",
       "author": {
         "name": "flaukowski",
         "email": "nflach78@gmail.com"
@@ -96,6 +96,21 @@
       "source": {
         "source": "url",
         "url": "https://github.com/NickFlach/Agent-Kax.git"
+      }
+    },
+    {
+      "name": "kannaka-quantum",
+      "description": "Kannaka Quantum — run Kannaka's wave-interference memory on real quantum hardware. Resonance recall as amplitude amplification, true quantum random numbers (QRNG), and OpenQASM 3 circuits on qBraid's free simulator (default, $0) or real QPUs (IonQ/Rigetti/IQM/AQT via qBraid or OpenQuantum), with spend guards. Ships a SKILL and an MCP server (quantum_devices/run_circuit/quantum_random/resonance_recall).",
+      "version": "0.1.0",
+      "author": {
+        "name": "flaukowski",
+        "email": "nflach78@gmail.com"
+      },
+      "homepage": "https://github.com/NickFlach/kannaka-quantum",
+      "category": "ai",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/NickFlach/kannaka-quantum.git"
       }
     }
   ]
