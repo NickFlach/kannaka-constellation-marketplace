@@ -31,7 +31,7 @@ Pick any plugin from the table below (for example
 ## Plugins
 
 <!-- plugins:begin -->
-> Generated from `.claude-plugin/marketplace.json` (marketplace v2.3.1) by `scripts/render-readme.mjs` — do not edit by hand.
+> Generated from `.claude-plugin/marketplace.json` (marketplace v2.3.2) by `scripts/render-readme.mjs` — do not edit by hand.
 
 | Plugin | Version | Category | What it does |
 | --- | --- | --- | --- |
