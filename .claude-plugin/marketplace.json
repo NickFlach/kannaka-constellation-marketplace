@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "kannaka-constellation",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "The Kannaka Constellation marketplace — the Kannaktopus multi-LLM orchestrator (octo), wave-interference memory (kannaka-memory), ghost-DJ radio (kannaka-radio), AI video intelligence (kannaka-cannon), production support (kannaka-staff), the artifact exchange (kannaka-kax), and quantum hardware (kannaka-quantum). Each plugin teaches Claude how to operate its system: HRM operations, swarm + substrate, event-sourced snapshots, collective recall, the consciousness-reactive DJ, video analysis + voice/avatar tools, constellation health + release ops, artifact curation + drops, and recall as amplitude amplification on real QPUs.",
   "owner": {
     "name": "flaukowski",
@@ -100,8 +100,8 @@
     },
     {
       "name": "kannaka-quantum",
-      "description": "Kannaka Quantum — run Kannaka's wave-interference memory on real quantum hardware. Resonance recall as amplitude amplification, true quantum random numbers (QRNG), and OpenQASM 3 circuits on qBraid's free simulator (default, $0) or real QPUs (IonQ/Rigetti/IQM/AQT via qBraid or OpenQuantum), with spend guards. Ships a SKILL and an MCP server (quantum_devices/run_circuit/quantum_random/resonance_recall).",
-      "version": "0.1.0",
+      "description": "Kannaka Quantum — run Kannaka's wave-interference memory on real quantum hardware, and drive qBraid Lab compute + autonomous remote coding agents. Resonance recall as amplitude amplification, true quantum random numbers (QRNG), and OpenQASM 3 circuits on qBraid's free simulator (default, $0) or real QPUs (IonQ/Rigetti/IQM/AQT via qBraid or OpenQuantum); plus qBraid Lab ops — environments, GPU/CPU compute provisioning, and launching/driving coding agents on remote instances over SSH — with per-minute spend guards. Ships a SKILL and an MCP server (quantum_devices/run_circuit/quantum_random/resonance_recall).",
+      "version": "0.2.3",
       "author": {
         "name": "flaukowski",
         "email": "nflach78@gmail.com"
