@@ -1,0 +1,88 @@
+name: Plugin release cascade
+
+# Receives a `plugin-released` repository_dispatch from a child plugin repo,
+# bumps that plugin's version in .claude-plugin/marketplace.json (and the
+# marketplace's own patch version), regenerates the README, and opens a PR.
+#
+# Dispatch payload (client_payload):
+#   { "plugin": "<plugin name in the manifest>", "version": "x.y.z" }
+#
+# Child repos wire this from their release workflow — see CONTRIBUTING.md.
+# It can also be run by hand via the Actions tab (workflow_dispatch).
+
+on:
+  repository_dispatch:
+    types: [plugin-released]
+  workflow_dispatch:
+    inputs:
+      plugin:
+        description: 'Plugin name as it appears in marketplace.json (e.g. kannaka-memory)'
+        required: true
+      version:
+        description: 'New plugin version (e.g. 2.1.1)'
+        required: true
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Resolve plugin + version
+        id: resolve
+        run: |
+          plugin="${{ github.event.client_payload.plugin }}"
+          version="${{ github.event.client_payload.version }}"
+          if [ -z "$plugin" ]; then plugin="${{ inputs.plugin }}"; fi
+          if [ -z "$version" ]; then version="${{ inputs.version }}"; fi
+          if [ -z "$plugin" ] || [ -z "$version" ]; then
+            echo "::error::plugin and version are both required (payload or inputs)"
+            exit 1
+          fi
+          version="${version#v}"
+          echo "plugin=$plugin" >> "$GITHUB_OUTPUT"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Bump manifest + regenerate README
+        id: bump
+        run: |
+          market_version="$(node scripts/bump.mjs \
+            --plugin '${{ steps.resolve.outputs.plugin }}' \
+            --version '${{ steps.resolve.outputs.version }}')"
+          echo "market_version=$market_version" >> "$GITHUB_OUTPUT"
+          node scripts/render-readme.mjs
+          node scripts/validate.mjs --offline
+
+      - name: Open a PR if anything changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          plugin="${{ steps.resolve.outputs.plugin }}"
+          version="${{ steps.resolve.outputs.version }}"
+          market="${{ steps.bump.outputs.market_version }}"
+          if git diff --quiet; then
+            echo "No changes — ${plugin} is already at ${version}."
+            exit 0
+          fi
+          branch="cascade/${plugin}-${version}"
+          git config user.name "kannaka-cascade-bot"
+          git config user.email "cascade@kannaka.local"
+          git checkout -b "$branch"
+          git add -A
+          git commit -m "chore(manifest): ${plugin} v${version} (marketplace v${market})" \
+                     -m "Auto-opened by .github/workflows/version-bump.yml in response to a ${plugin} release. Bumps the plugin version in marketplace.json, regenerates the README listing, and bumps the marketplace patch version."
+          git push -f origin "$branch"
+          gh pr create \
+            --title "chore(manifest): ${plugin} v${version} (marketplace v${market})" \
+            --body "Triggered by a \`plugin-released\` dispatch for **${plugin} v${version}**. Bumps \`marketplace.json\` and regenerates the README. Merge to publish the update to \`/plugin marketplace\` users." \
+            --label automation \
+            --head "$branch" \
+            || echo "PR already exists for $branch"
