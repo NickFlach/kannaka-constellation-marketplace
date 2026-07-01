@@ -51,8 +51,20 @@ jobs:
         with:
           node-version: '20'
 
+      # Binary-only releases re-announce an unchanged plugin version; skip them
+      # instead of opening a noise PR that only bumps the marketplace patch.
+      - name: Skip if the manifest already has this version
+        id: precheck
+        run: |
+          current="$(node -p "JSON.parse(require('fs').readFileSync('.claude-plugin/marketplace.json','utf8')).plugins.find(p=>p.name==='${{ steps.resolve.outputs.plugin }}')?.version ?? ''")"
+          if [ "$current" = "${{ steps.resolve.outputs.version }}" ]; then
+            echo "::notice::${{ steps.resolve.outputs.plugin }} is already at ${current} — nothing to publish."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Bump manifest + regenerate README
         id: bump
+        if: steps.precheck.outputs.skip != 'true'
         run: |
           market_version="$(node scripts/bump.mjs \
             --plugin '${{ steps.resolve.outputs.plugin }}' \
@@ -62,6 +74,7 @@ jobs:
           node scripts/validate.mjs --offline
 
       - name: Open a PR if anything changed
+        if: steps.precheck.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -82,9 +95,18 @@ jobs:
           git push -f origin "$branch"
           # Ensure the label exists so --label below can't fail the create.
           gh label create automation -c FBCA04 -d "Automated PR (release cascade)" 2>/dev/null || true
-          gh pr create \
+          # Don't mask real failures (e.g. the repo setting "Allow GitHub Actions
+          # to create and approve pull requests" being off) as "already exists".
+          if ! gh pr create \
             --title "chore(manifest): ${plugin} v${version} (marketplace v${market})" \
             --body "Triggered by a \`plugin-released\` dispatch for **${plugin} v${version}**. Bumps \`marketplace.json\` and regenerates the README. Merge to publish the update to \`/plugin marketplace\` users." \
             --label automation \
-            --head "$branch" \
-            || echo "PR already exists for $branch"
+            --head "$branch"; then
+            existing="$(gh pr list --head "$branch" --state open --json number -q '.[0].number')"
+            if [ -n "$existing" ]; then
+              echo "PR #$existing already exists for $branch — updated by the force-push."
+            else
+              echo "::error::gh pr create failed and no open PR exists for $branch. If the error mentions Actions not being permitted to create PRs, enable it under Settings → Actions → General → Workflow permissions."
+              exit 1
+            fi
+          fi
