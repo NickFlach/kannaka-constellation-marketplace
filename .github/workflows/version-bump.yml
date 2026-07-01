@@ -80,6 +80,8 @@ jobs:
           git commit -m "chore(manifest): ${plugin} v${version} (marketplace v${market})" \
                      -m "Auto-opened by .github/workflows/version-bump.yml in response to a ${plugin} release. Bumps the plugin version in marketplace.json, regenerates the README listing, and bumps the marketplace patch version."
           git push -f origin "$branch"
+          # Ensure the label exists so --label below can't fail the create.
+          gh label create automation -c FBCA04 -d "Automated PR (release cascade)" 2>/dev/null || true
           gh pr create \
             --title "chore(manifest): ${plugin} v${version} (marketplace v${market})" \
             --body "Triggered by a \`plugin-released\` dispatch for **${plugin} v${version}**. Bumps \`marketplace.json\` and regenerates the README. Merge to publish the update to \`/plugin marketplace\` users." \
