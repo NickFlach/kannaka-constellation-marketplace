@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "kannaka-constellation",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "The Kannaka Constellation marketplace — the Kannaktopus multi-LLM orchestrator (octo), wave-interference memory (kannaka-memory), ghost-DJ radio (kannaka-radio), AI video intelligence (kannaka-cannon), production support (kannaka-staff), the artifact exchange (kannaka-kax), and quantum hardware (kannaka-quantum). Each plugin teaches Claude how to operate its system: HRM operations, swarm + substrate, event-sourced snapshots, collective recall, the consciousness-reactive DJ, video analysis + voice/avatar tools, constellation health + release ops, artifact curation + drops, and recall as amplitude amplification on real QPUs.",
   "owner": {
     "name": "flaukowski",
@@ -11,7 +11,7 @@
     {
       "name": "octo",
       "description": "Kannaktopus — the multi-LLM orchestrator that conducts the constellation: Double Diamond workflows, provider routing (Codex/Gemini/Copilot/Qwen/Ollama/Perplexity/OpenRouter), adversarial multi-model review, safety gates, discipline mode, and 32 personas / 49 commands / 51 skills. Run /octo:setup.",
-      "version": "10.1.0",
+      "version": "10.3.0",
       "author": {
         "name": "Nick Flach",
         "email": "nflach78@gmail.com"
